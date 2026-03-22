@@ -7,6 +7,8 @@
     <meta property="og:title" content="Romi & Shincy — Wedding Invitation">
     <meta property="og:description" content="Join us to celebrate the wedding of Romi & Shincy on June 8, 2026.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://romishincy.space">
+    <meta property="og:image" content="https://romishincy.space/og-image.jpg">
     <title>Romi & Shincy — Wedding Invitation</title>
     <meta name="theme-color" content="#6B2336">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -943,7 +945,7 @@
         
         // --- GUESTBOOK (Google Sheets) ---
         // REPLACE THIS URL after setting up Google Apps Script (see README.md)
-        const GOOGLE_SHEETS_URL='YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+        const GOOGLE_SHEETS_URL='https://script.google.com/macros/s/AKfycbxd-YyFrbxuEyYoMrpPopVdL0A54CqI8V2gFLV1R8yPX83jI2UxR0mqRGsWsD998rhOEQ/exec';
         const gbName=document.getElementById('gbName');const gbMessage=document.getElementById('gbMessage');const gbSubmit=document.getElementById('gbSubmit');const gbStatus=document.getElementById('gbStatus');async function submitWish(){const name=gbName.value.trim();const message=gbMessage.value.trim();if(!name){gbStatus.textContent='Please enter your name';return;}if(!message){gbStatus.textContent='Please write a wish';return;}if(message.length<3){gbStatus.textContent='Wish is too short';return;}gbSubmit.disabled=true;gbStatus.textContent='Sending your blessings...';if(GOOGLE_SHEETS_URL.includes('YOUR_GOOGLE')){console.warn('Google Sheets URL not configured.');showWishSuccess();return;}try{await fetch(GOOGLE_SHEETS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,message})});showWishSuccess();}catch(err){gbStatus.textContent='Could not send. Please try again.';gbSubmit.disabled=false;setTimeout(()=>gbStatus.textContent='',4000);}}function showWishSuccess(){gbName.value='';gbMessage.value='';gbSubmit.disabled=false;gbStatus.textContent='Thank you for your blessings! \u2764';setTimeout(()=>gbStatus.textContent='',5000);}gbSubmit.addEventListener('click',submitWish);gbName.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();gbMessage.focus();}});gbMessage.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();submitWish();}});setTimeout(()=>{const loader=document.getElementById('preloader');if(loader&&!loader.classList.contains('hidden'))loader.classList.add('hidden');},5000);setTimeout(()=>{if(!envelopeOpened){envelopeAutoOpened=true;const envScreen=document.getElementById('envelopeScreen');if(envScreen&&!envScreen.classList.contains('hidden'))handleEnvelopeOpen();}},12000);
     </script>
 </body>
